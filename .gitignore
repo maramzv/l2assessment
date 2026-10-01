@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Claude Code chat transcripts (local records only)
+docs/transcripts/claude-chats/
+.claude/save-chat-state.json
