@@ -2,6 +2,32 @@
 
 **Goal of the product:** let a small support team handle more volume without more staff. That only works if the tool (1) routes messages to the right place and (2) never lets an urgent one sit in the queue. Every finding below is judged against those two things.
 
+## What I improved, in plain English
+
+### The main improvement: the app now judges urgency correctly
+
+**Before:** the app decided urgency by counting surface features, like how short the message was, whether it was in ALL CAPS, or whether it said "please." So:
+- "Server down now" was rated **Low**, because it is short.
+- "Thank you so much!!" was rated **High**, because of the exclamation marks.
+- "I WAS CHARGED TWICE" was rated **Low**, because of the caps.
+
+A support team using this would miss real emergencies and waste time on thank-you notes.
+
+**After:** the AI reads the message and decides based on what actually matters: is the business losing money, is a service down, is the customer blocked, is there a deadline? Tone, caps and length are explicitly ignored. I also added a small safety rule: if a Technical or Billing message clearly says something like "server down" or "charged twice," it can never be rated below High, even if the AI slips up.
+
+### Two smaller fixes that came along with it
+
+1. **Categories are more reliable.** The old code asked the AI a vague question and then searched its answer for words like "billing." If the AI did not use one of those words, the result was "Unknown." Now the AI is told exactly which categories exist and replies in a fixed format.
+2. **Recommended actions make sense.** Before, every technical problem said "restart your browser" and feature requests said "check billing portal." Now each category has a sensible action, and high-urgency ones say things like "escalate to the on-call engineer immediately."
+
+### One safety fix: the app is honest when the AI is down
+
+If the AI cannot be reached, the app now shows a yellow warning. Before, it quietly showed fake answers, which is how the retired-model problem (Finding 0 below) went unnoticed.
+
+### Proof it worked
+
+I ran the same messages through the old and new versions. On 12 fresh messages, category accuracy went from 4/12 to 12/12 and urgency accuracy from 6/12 to 11/12. The old version missed 2 of 2 critical outages on that set; the new one missed none. The full tables and limitations are below.
+
 ## What I tested
 
 I ran 28 customer messages through the app: the 8 in `sample-messages.json`, 8 more I added (angry all-caps, negation, polite-but-urgent, Spanish, etc.), and a separate set of 12 written *after* the fix with their expected answers fixed in advance (`evals/messages-holdout.mjs`). A "correct" answer is whatever a support lead would accept; ambiguous messages list more than one acceptable answer.
