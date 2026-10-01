@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import ReactMarkdown from 'react-markdown'
-import { categorizeMessage } from '../utils/llmHelper'
-import { calculateUrgency } from '../utils/urgencyScorer'
+import { analyzeMessage } from '../utils/llmHelper'
 import { getRecommendedAction } from '../utils/templates'
 
 function AnalyzePage() {
@@ -28,21 +27,19 @@ function AnalyzePage() {
     setResults(null)
     
     try {
-      // Run categorization (LLM call)
-      const { category, reasoning } = await categorizeMessage(message)
-      
-      // Calculate urgency (rule-based)
-      const urgency = calculateUrgency(message)
-      
-      // Get recommended action (template-based)
-      const recommendedAction = getRecommendedAction(category)
-      
+      // One LLM call returns category, urgency and reasoning (rules guard critical cases)
+      const { category, urgency, reasoning, source } = await analyzeMessage(message)
+
+      // Get recommended action (template-based, depends on category and urgency)
+      const recommendedAction = getRecommendedAction(category, urgency)
+
       const analysisResult = {
         message,
         category,
         urgency,
         recommendedAction,
         reasoning,
+        source,
         timestamp: new Date().toISOString()
       }
 
@@ -128,7 +125,13 @@ function AnalyzePage() {
         {results && (
           <div className="bg-white rounded-lg shadow-md p-6">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Analysis Results</h2>
-            
+
+            {results.source === 'fallback' && (
+              <div className="mb-4 bg-yellow-50 border border-yellow-300 text-yellow-900 rounded-lg p-3 text-sm">
+                ⚠️ The AI could not be reached, so this is a keyword-based estimate. Review it manually before acting.
+              </div>
+            )}
+
             <div className="space-y-4">
               <div>
                 <div className="text-sm font-semibold text-gray-600 mb-1">Category</div>

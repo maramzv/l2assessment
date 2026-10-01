@@ -1,0 +1,374 @@
+{
+  "mode": "new",
+  "set": "main",
+  "ranAt": "2026-10-01T17:21:50.882Z",
+  "summary": {
+    "n": 16,
+    "cat": 16,
+    "urg": 16,
+    "missedHigh": 0
+  },
+  "results": [
+    {
+      "id": 1,
+      "note": "Short outage report",
+      "message": "Database connection lost",
+      "expected": {
+        "category": [
+          "Technical Problem"
+        ],
+        "urgency": [
+          "High"
+        ]
+      },
+      "got": {
+        "category": "Technical Problem",
+        "urgency": "High",
+        "reasoning": "The message reports a lost database connection, indicating a functional failure. This likely blocks the customer's operations but does not specify a widespread outage or immediate deadline, so it is medium urgency.",
+        "source": "ai",
+        "action": "Escalate to the on-call engineer immediately and acknowledge the customer within 15 minutes."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 2,
+      "note": "Praise with exclamation marks",
+      "message": "Thank you so much! Your team has been incredibly helpful and I really appreciate the fast response to my question earlier today!",
+      "expected": {
+        "category": [
+          "Customer Feedback"
+        ],
+        "urgency": [
+          "Low"
+        ]
+      },
+      "got": {
+        "category": "Customer Feedback",
+        "urgency": "Low",
+        "reasoning": "The message expresses gratitude and praise without any request or problem. It is a positive feedback, which is low urgency.",
+        "source": "ai",
+        "action": "Send a short thank-you reply and share the feedback with the team."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 3,
+      "note": "Feature request",
+      "message": "Could you add an export to CSV feature? Would be really useful for my monthly reports.",
+      "expected": {
+        "category": [
+          "Feature Request"
+        ],
+        "urgency": [
+          "Low"
+        ]
+      },
+      "got": {
+        "category": "Feature Request",
+        "urgency": "Low",
+        "reasoning": "The customer is asking for a new export to CSV functionality, which is a feature request. It does not indicate any immediate impact or deadline, so the urgency is low.",
+        "source": "ai",
+        "action": "Log it in the feature-request backlog and thank the customer for the idea."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 4,
+      "note": "Billing + technical hybrid",
+      "message": "My payment failed and now I can't access the dashboard. Is there a bug or do I need to update my credit card?",
+      "expected": {
+        "category": [
+          "Billing Issue",
+          "Technical Problem"
+        ],
+        "urgency": [
+          "Medium",
+          "High"
+        ]
+      },
+      "got": {
+        "category": "Billing Issue",
+        "urgency": "High",
+        "reasoning": "The customer reports a failed payment that is preventing access to the dashboard, indicating a critical service blockage. This impacts their ability to use the product and requires immediate attention.",
+        "source": "ai",
+        "action": "Escalate to the billing lead now: verify the charge and refund immediately if it is a duplicate or unauthorized."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 5,
+      "note": "Minimal input",
+      "message": "hi",
+      "expected": {
+        "category": [
+          "General Inquiry",
+          "Unknown"
+        ],
+        "urgency": [
+          "Low"
+        ]
+      },
+      "got": {
+        "category": "General Inquiry",
+        "urgency": "Low",
+        "reasoning": "The message only contains a greeting with no specific request or problem. It does not indicate any urgency.",
+        "source": "ai",
+        "action": "Answer directly or reply with the relevant FAQ link."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 6,
+      "note": "Urgent short message",
+      "message": "Server down now",
+      "expected": {
+        "category": [
+          "Technical Problem"
+        ],
+        "urgency": [
+          "High"
+        ]
+      },
+      "got": {
+        "category": "Technical Problem",
+        "urgency": "High",
+        "reasoning": "The message reports a server being down, indicating a service outage affecting availability. This is a high‑urgency issue as it impacts functionality immediately.",
+        "source": "ai",
+        "action": "Escalate to the on-call engineer immediately and acknowledge the customer within 15 minutes."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 7,
+      "note": "Rambling, no real issue",
+      "message": "Hi! I was just browsing through your website and noticed you have a really nice design! I especially like the color scheme and the way you've organized the navigation menu! Everything looks so professional and clean! Just wanted to share my positive feedback!",
+      "expected": {
+        "category": [
+          "Customer Feedback",
+          "General Inquiry"
+        ],
+        "urgency": [
+          "Low"
+        ]
+      },
+      "got": {
+        "category": "Customer Feedback",
+        "urgency": "Low",
+        "reasoning": "The message expresses praise for the website design without requesting anything or reporting a problem. This is feedback with no impact on operations, so it is low urgency.",
+        "source": "ai",
+        "action": "Send a short thank-you reply and share the feedback with the team."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 8,
+      "note": "General question",
+      "message": "What are your business hours?",
+      "expected": {
+        "category": [
+          "General Inquiry"
+        ],
+        "urgency": [
+          "Low"
+        ]
+      },
+      "got": {
+        "category": "General Inquiry",
+        "urgency": "Low",
+        "reasoning": "The customer is asking about business hours, which is a basic informational question. It has no impact on service or deadlines, so the urgency is low.",
+        "source": "ai",
+        "action": "Answer directly or reply with the relevant FAQ link."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 9,
+      "note": "Angry all-caps double charge",
+      "message": "I WAS CHARGED TWICE AND I WANT MY MONEY BACK NOW",
+      "expected": {
+        "category": [
+          "Billing Issue"
+        ],
+        "urgency": [
+          "Medium",
+          "High"
+        ]
+      },
+      "got": {
+        "category": "Billing Issue",
+        "urgency": "High",
+        "reasoning": "The customer reports being charged twice, which is a duplicate charge and requires an immediate refund. This financial error impacts the customer directly and needs prompt resolution.",
+        "source": "ai",
+        "action": "Escalate to the billing lead now: verify the charge and refund immediately if it is a duplicate or unauthorized."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 10,
+      "note": "Negation trap",
+      "message": "This is not a billing issue, but the login page crashes every time I try to sign in.",
+      "expected": {
+        "category": [
+          "Technical Problem"
+        ],
+        "urgency": [
+          "Medium",
+          "High"
+        ]
+      },
+      "got": {
+        "category": "Technical Problem",
+        "urgency": "Medium",
+        "reasoning": "The user reports that the login page crashes, preventing them from signing in, which is a functional issue. It blocks a single customer, so it is a medium urgency problem.",
+        "source": "ai",
+        "action": "Collect steps to reproduce plus browser/device details and route to technical support."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 11,
+      "note": "Plan upgrade question",
+      "message": "Can I upgrade my subscription to the pro plan?",
+      "expected": {
+        "category": [
+          "Billing Issue",
+          "General Inquiry"
+        ],
+        "urgency": [
+          "Low"
+        ]
+      },
+      "got": {
+        "category": "Billing Issue",
+        "urgency": "Low",
+        "reasoning": "The customer wants to change their subscription plan, which falls under billing-related requests. There's no immediate deadline or impact, so the urgency is low.",
+        "source": "ai",
+        "action": "Route to the billing team to review the customer's account and charges."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 12,
+      "note": "Customer-facing outage",
+      "message": "URGENT: all our customers are seeing 500 errors at checkout and we're losing sales every minute.",
+      "expected": {
+        "category": [
+          "Technical Problem"
+        ],
+        "urgency": [
+          "High"
+        ]
+      },
+      "got": {
+        "category": "Technical Problem",
+        "urgency": "High",
+        "reasoning": "The message reports a widespread 500 error at checkout causing loss of sales, which is a critical service outage affecting many customers. This impact on revenue and immediate user experience makes it high urgency.",
+        "source": "ai",
+        "action": "Escalate to the on-call engineer immediately and acknowledge the customer within 15 minutes."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 13,
+      "note": "Polite but time-sensitive",
+      "message": "Please cancel my subscription before the next billing date tomorrow, thank you.",
+      "expected": {
+        "category": [
+          "Billing Issue"
+        ],
+        "urgency": [
+          "Medium",
+          "High"
+        ]
+      },
+      "got": {
+        "category": "Billing Issue",
+        "urgency": "High",
+        "reasoning": "The request is to cancel a subscription before the next billing date, which is tomorrow, creating a time‑critical billing issue. This deadline within 24 hours makes it high urgency.",
+        "source": "ai",
+        "action": "Escalate to the billing lead now: verify the charge and refund immediately if it is a duplicate or unauthorized."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 14,
+      "note": "Feature request, polite",
+      "message": "I would love a dark mode option. It would be much easier on my eyes at night.",
+      "expected": {
+        "category": [
+          "Feature Request"
+        ],
+        "urgency": [
+          "Low"
+        ]
+      },
+      "got": {
+        "category": "Feature Request",
+        "urgency": "Low",
+        "reasoning": "The customer is asking for a new dark mode feature, which is a request for additional functionality. It does not indicate any immediate impact or deadline, so the urgency is low.",
+        "source": "ai",
+        "action": "Log it in the feature-request backlog and thank the customer for the idea."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 15,
+      "note": "Cosmetic bug, no rush",
+      "message": "The export button is slightly misaligned on mobile. No rush at all!",
+      "expected": {
+        "category": [
+          "Technical Problem"
+        ],
+        "urgency": [
+          "Low"
+        ]
+      },
+      "got": {
+        "category": "Technical Problem",
+        "urgency": "Low",
+        "reasoning": "The user reports a UI bug (misaligned export button) that affects usability but indicates no urgency. This is a technical issue with low impact.",
+        "source": "ai",
+        "action": "Collect steps to reproduce plus browser/device details and route to technical support."
+      },
+      "catOk": true,
+      "urgOk": true
+    },
+    {
+      "id": 16,
+      "note": "Non-English billing",
+      "message": "Mi cuenta fue cobrada dos veces este mes, por favor ayuda.",
+      "expected": {
+        "category": [
+          "Billing Issue"
+        ],
+        "urgency": [
+          "Medium",
+          "High"
+        ]
+      },
+      "got": {
+        "category": "Billing Issue",
+        "urgency": "High",
+        "reasoning": "The customer reports being charged twice, which is a billing problem. It affects their account but does not indicate an immediate deadline, so it is medium urgency.",
+        "source": "ai",
+        "action": "Escalate to the billing lead now: verify the charge and refund immediately if it is a duplicate or unauthorized."
+      },
+      "catOk": true,
+      "urgOk": true
+    }
+  ]
+}

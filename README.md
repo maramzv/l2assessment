@@ -62,10 +62,12 @@ Support teams waste time manually reading and triaging customer messages. This t
 
 1. **Paste Message**: User pastes a customer support message into the text area
 2. **Analyze**: Click "Analyze Message" to process the input
-3. **Classification**: The app runs three processes in parallel:
-   - **Category Classification** (LLM): Uses Groq AI (Llama 3.3 70B) to categorize the message
-   - **Urgency Scoring** (Rule-based): Applies simple rules to determine urgency
-   - **Recommendation** (Template-based): Maps category to a recommended action
+3. **Classification**: The app makes one structured Groq AI call (`openai/gpt-oss-120b`) that returns category, urgency and reasoning, then:
+   - **Urgency safety net** (Rule-based): a message in Technical/Billing with an unambiguous critical signal (e.g. "server down", "charged twice") is never rated below High
+   - **Recommendation** (Template-based): Maps category and urgency to a recommended action
+   - If the AI cannot be reached, keyword rules are used and the UI shows a warning
+
+See [IMPROVEMENTS.md](IMPROVEMENTS.md) for what changed and the before/after test results.
 4. **Display Results**: Shows category, urgency tag, recommended action, and AI reasoning
 5. **History**: All analyses are saved to localStorage and viewable in the History tab
 
